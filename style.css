@@ -1,0 +1,139 @@
+body {
+  background: rgb(64, 48, 78);
+  background: linear-gradient(
+    90deg,
+    rgba(64, 48, 78, 1) 0%,
+    rgba(92, 95, 125, 1) 88%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+}
+
+.paint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.paint__controls {
+  justify-items: flex-end;
+  margin-bottom: 5px;
+}
+
+.paint__canvas-row {
+  display: flex;
+}
+
+.paint__palette {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(130, 112, 134, 0.5);
+  padding: 10px;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+
+.paint__color {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.paint__color:hover {
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.paint__color-picker {
+  grid-column: span 2;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.paint__canvas {
+  border: 1px solid #000000;
+  background-color: white;
+}
+
+.paint__button {
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #303659;
+  cursor: pointer;
+}
+
+.paint__button svg {
+  transition: transform 0.2s ease;
+}
+
+.paint__button:hover svg {
+  transform: scale(1.15);
+}
+
+.paint__control-button {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: none;
+  border-radius: 5px;
+}
+
+.paint__control-button:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.paint__control-button-back {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: none;
+  margin-right: 3px;
+  border-radius: 5px;
+}
+.paint__control-button-back:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.slider {
+  width: 200px;
+  cursor: pointer;
+}
+.paint__canvas-container {
+  width: 100%;
+  position: relative;
+}
+
+.paint__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (max-width: 900px) {
+  .paint__palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(130, 112, 134, 0.5);
+    padding: 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+  }
+
+  .paint__canvas-row {
+    display: block;
+  }
+
+  .paint__controls {
+    margin-bottom: 5px;
+  }
+}
