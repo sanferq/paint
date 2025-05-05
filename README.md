@@ -49,11 +49,11 @@
 
 ### Основной интерфейс
 
-![Main Interface](screenshots\empty.png)
+![Main Interface](screenshots/empty.png)
 
 ### Пример рисунка
 
-![Example Drawing](screenshots\artlel.png)
+![Example Drawing](screenshots/artlel.png)
 
 ## Как начать
 
