@@ -1,139 +1,305 @@
-body {
-  background: rgb(64, 48, 78);
-  background: linear-gradient(
-    90deg,
-    rgba(64, 48, 78, 1) 0%,
-    rgba(92, 95, 125, 1) 88%
-  );
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+:root {
+  --primary: #9b74b3;
+  --primary-hover: #2563eb;
+  --dark: #081124;
+  --light: #f9fafb;
+  --gray: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --radius: 0.5rem;
+}
+
+* {
   margin: 0;
-  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #b8a7af;
+  min-height: 100vh;
+  padding: 1rem;
+  color: var(--dark);
 }
 
 .paint {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.paint__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background: #977e95;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.paint__header {
+  padding: 1rem 1.5rem;
+  background: #210824;
+  color: white;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
 }
 
-.paint__controls {
-  justify-items: flex-end;
-  margin-bottom: 5px;
-}
-
-.paint__canvas-row {
+.paint__title {
+  font-size: 1.25rem;
+  font-weight: 600;
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.paint__palette {
+.paint__title-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.paint__main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.paint__toolbar {
+  width: 280px;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.paint__tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.paint__tool-section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.paint__tools-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.paint__tool-button {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.paint__tool-button:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+.paint__tool-button--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.paint__tool-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.paint__color-palette {
   display: grid;
-  gap: 10px;
-  margin-bottom: 10px;
-  background-color: rgba(130, 112, 134, 0.5);
-  padding: 10px;
-  border-radius: 7px;
-  margin-right: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
 }
 
-.paint__color {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
-}
-
-.paint__color:hover {
-  transform: scale(1.2) rotate(5deg);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.paint__color-picker {
-  grid-column: span 2;
+.paint__color-button {
   width: 100%;
-  height: 30px;
-  border: 1px solid #ccc;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  border: 2px solid #00000047;
   cursor: pointer;
-  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
-.paint__canvas {
-  border: 1px solid #000000;
-  background-color: white;
+.paint__color-button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow);
 }
 
-.paint__button {
-  border-radius: 10px;
-  padding: 5px;
-  border: 1px solid #303659;
+.paint__color-button--active {
+  border-color: var(--dark);
+  transform: scale(1.1);
+}
+
+.paint__custom-color {
+  grid-column: span 5;
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
   cursor: pointer;
 }
 
-.paint__button svg {
-  transition: transform 0.2s ease;
+.paint__slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.paint__button:hover svg {
-  transform: scale(1.15);
+.paint__slider-label {
+  color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
 }
 
-.paint__control-button {
+.paint__slider {
+  width: 100%;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  accent-color: var(--primary);
+}
+
+.paint__action-button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
   border: none;
-  border-radius: 5px;
-}
-
-.paint__control-button:hover {
-  transform: scale(1.1) rotate(3deg);
-}
-
-.paint__control-button-back {
+  background: var(--primary);
+  color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  border: none;
-  margin-right: 3px;
-  border-radius: 5px;
-}
-.paint__control-button-back:hover {
-  transform: scale(1.1) rotate(-3deg);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.slider {
-  width: 200px;
-  cursor: pointer;
+.paint__action-button:hover {
+  background: #581d7e;
+  transform: translateY(-1px);
 }
+
+.paint__action-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.paint__action-button--secondary {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--dark);
+}
+
+.paint__action-button--secondary:hover {
+  background: #f1f5f9;
+}
+
+.paint__action-button--mt {
+  margin-top: 0.5rem;
+}
+
 .paint__canvas-container {
-  width: 100%;
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.paint__canvas-wrapper {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow);
   position: relative;
 }
 
 .paint__canvas {
-  width: 100%;
-  height: 100%;
   display: block;
+  background: white;
+  cursor: crosshair;
 }
-@media (max-width: 900px) {
-  .paint__palette {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
-    background-color: rgba(130, 112, 134, 0.5);
-    padding: 10px;
-    border-radius: 7px;
-    margin-right: 10px;
-  }
 
-  .paint__canvas-row {
-    display: block;
-  }
+.paint__zoom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-  .paint__controls {
-    margin-bottom: 5px;
+.paint__zoom-button {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.paint__zoom-button:hover {
+  background: #f1f5f9;
+}
+
+@media (max-width: 768px) {
+  .paint__main {
+      flex-direction: column;
+  }
+  
+  .paint__toolbar {
+      width: 100%;
+      padding: 1rem;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+  }
+  
+  .paint__tool-section {
+      flex: 1;
+      min-width: 120px;
+  }
+  
+  .paint__color-palette {
+      grid-template-columns: repeat(8, 1fr);
+  }
+  
+  .paint__custom-color {
+      grid-column: span 8;
+  }
+}
+
+@media (max-width: 480px) {
+  .paint__color-palette {
+      grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .paint__custom-color {
+      grid-column: span 5;
+  }
+  
+  .paint__tools-row {
+      flex-wrap: wrap;
   }
 }

@@ -4,211 +4,310 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paint</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="icon" href="./img/brush.svg">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./img/brush.svg" />
   </head>
   <body>
-    <main class="paint">
+    <div class="paint">
       <div class="paint__container">
-        <div class="paint__controls">
-          <div class="paint__controls-left">
-            <button id="brush" class="paint__button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#000000"
-              >
-                <path
-                  d="M240-120q-45 0-89-22t-71-58q26 0 53-20.5t27-59.5q0-50 35-85t85-35q50 0 85 35t35 85q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T320-280q0-17-11.5-28.5T280-320q-17 0-28.5 11.5T240-280q0 23-5.5 42T220-202q5 2 10 2h10Zm230-160L360-470l358-358q11-11 27.5-11.5T774-828l54 54q12 12 12 28t-12 28L470-360Zm-190 80Z"
-                />
-              </svg>
-            </button>
-            <button id="eraser" class="paint__button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#000000"
-              >
-                <path
-                  d="M690-240h190v80H610l80-80Zm-500 80-85-85q-23-23-23.5-57t22.5-58l440-456q23-24 56.5-24t56.5 23l199 199q23 23 23 57t-23 57L520-160H190Zm296-80 314-322-198-198-442 456 64 64h262Zm-6-240Z"
-                />
-              </svg>
-            </button>
-            <button onclick="clearCanvas()" class="paint__button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#000000"
-              >
-                <path
-                  d="M120-280v-80h560v80H120Zm80-160v-80h560v80H200Zm80-160v-80h560v80H280Z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="paint__canvas-row">
-          <div class="paint__palette">
-            <button
-              class="paint__color"
-              style="background-color: #7f0000"
-              data-color="#7f0000"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: red"
-              data-color="#FF0000"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #fd027e"
-              data-color="#fd027e"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #ff00fd"
-              data-color="#ff00fd"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #7a4302"
-              data-color="#7a4302"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #fd8341"
-              data-color="#fd8341"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: yellow"
-              data-color="#FFFF00"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #808200"
-              data-color="#808200"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #018100"
-              data-color="#018100"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: green"
-              data-color="#00FF00"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #008180"
-              data-color="#008180"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #0380fb"
-              data-color="#0380fb"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: blue"
-              data-color="#0000FF"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #02017b"
-              data-color="#02017b"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #023f80"
-              data-color="#023f80"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #7e00fe"
-              data-color="#7e00fe"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: purple"
-              data-color="#800080"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: black"
-              data-color="#000000"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: gray"
-              data-color="#808080"
-            ></button>
-            <button
-              class="paint__color"
-              style="background-color: #0400fe"
-              data-color="#0400fe"
-            ></button>
-            <input
-              type="color"
-              id="colorPicker"
-              class="paint__color-picker"
-              value="#000000"
-            />
-          </div>
-          <div class="paint__canvas-container">
-            <canvas
-              id="paintCanvas"
-              class="paint__canvas"
-              width="800"
-              height="600"
-            ></canvas>
-          </div>
-        </div>
-        <div class="paint__controls-bottom">
-          <button class="paint__control-button-back" onclick="undo()">
+        <header class="paint__header">
+          <div class="paint__title">
             <svg
+              class="paint__title-icon"
               xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#000000"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
-                d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
               />
             </svg>
-          </button>
-          <button class="paint__control-button" onclick="redo()">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#000000"
-            >
-              <path
-                d="M396-200q-97 0-166.5-63T160-420q0-94 69.5-157T396-640h252L544-744l56-56 200 200-200 200-56-56 104-104H396q-63 0-109.5 40T240-420q0 60 46.5 100T396-280h284v80H396Z"
-              />
-            </svg>
-          </button>
-          <input
-            class="slider"
-            type="range"
-            id="lineWidth"
-            min="1"
-            max="40"
-            value="5"
-          />
-        </div>
+            <p class="paint__title-text">Artlet</p>
+          </div>
+          <div class="paint__zoom">
+            <button class="paint__zoom-button" id="zoomOut">-</button>
+            <span class="paint__zoom-level" id="zoomLevel">100%</span>
+            <button class="paint__zoom-button" id="zoomIn">+</button>
+          </div>
+        </header>
+
+        <main class="paint__main">
+          <aside class="paint__toolbar">
+            <div class="paint__tool-section">
+              <h3 class="paint__tool-section-title">Инструменты</h3>
+              <div class="paint__tools-row">
+                <button
+                  id="brush"
+                  class="paint__tool-button paint__tool-button--active"
+                  title="Кисть"
+                >
+                  <svg
+                    class="paint__tool-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                  </svg>
+                </button>
+                <button id="eraser" class="paint__tool-button" title="Ластик">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#none"
+                  >
+                    <path
+                      d="M690-240h190v80H610l80-80Zm-500 80-85-85q-23-23-23.5-57t22.5-58l440-456q23-24 56.5-24t56.5 23l199 199q23 23 23 57t-23 57L520-160H190Zm296-80 314-322-198-198-442 456 64 64h262Zm-6-240Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="paint__tool-section">
+              <h3 class="paint__tool-section-title">Цвета</h3>
+              <div class="paint__color-palette">
+                <button
+                  class="paint__color-button"
+                  style="background-color: #ef4444"
+                  data-color="#ef4444"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #f97316"
+                  data-color="#f97316"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #f59e0b"
+                  data-color="#f59e0b"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #eab308"
+                  data-color="#eab308"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #84cc16"
+                  data-color="#84cc16"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #10b981"
+                  data-color="#10b981"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #14b8a6"
+                  data-color="#14b8a6"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #06b6d4"
+                  data-color="#06b6d4"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #0ea5e9"
+                  data-color="#0ea5e9"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #3b82f6"
+                  data-color="#3b82f6"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #6366f1"
+                  data-color="#6366f1"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #8b5cf6"
+                  data-color="#8b5cf6"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #a855f7"
+                  data-color="#a855f7"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #d946ef"
+                  data-color="#d946ef"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #ec4899"
+                  data-color="#ec4899"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #f43f5e"
+                  data-color="#f43f5e"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #000000"
+                  data-color="#000000"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #64748b"
+                  data-color="#64748b"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #94a3b8"
+                  data-color="#94a3b8"
+                ></button>
+                <button
+                  class="paint__color-button"
+                  style="background-color: #e2e8f0"
+                  data-color="#e2e8f0"
+                ></button>
+                <input
+                  type="color"
+                  id="colorPicker"
+                  class="paint__custom-color"
+                  value="#000000"
+                />
+              </div>
+            </div>
+
+            <div class="paint__tool-section">
+              <h3 class="paint__tool-section-title">Толщина</h3>
+              <div class="paint__slider-container">
+                <div class="paint__slider-label">
+                  <span>Толщина кисти</span>
+                  <span id="brushSizeValue" class="paint__brush-size-value"
+                    >5px</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  id="lineWidth"
+                  class="paint__slider"
+                  min="1"
+                  max="50"
+                  value="5"
+                />
+              </div>
+            </div>
+
+            <div class="paint__tool-section">
+              <h3 class="paint__tool-section-title">Действия</h3>
+              <div class="paint__tools-row">
+                <button
+                  id="undoButton"
+                  class="paint__action-button paint__action-button--secondary"
+                  title="Отменить"
+                >
+                  <svg
+                    class="paint__action-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                    />
+                  </svg>
+                </button>
+                <button
+                  id="redoButton"
+                  class="paint__action-button paint__action-button--secondary"
+                  title="Повторить"
+                >
+                  <svg
+                    class="paint__action-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <button
+                id="clearButton"
+                class="paint__action-button paint__action-button--secondary paint__action-button--mt"
+              >
+                <svg
+                  class="paint__action-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+                Очистить холст
+              </button>
+              <button
+                id="saveButton"
+                class="paint__action-button paint__action-button--mt"
+              >
+                <svg
+                  class="paint__action-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                Сохранить рисунок
+              </button>
+            </div>
+          </aside>
+
+          <section class="paint__canvas-container">
+            <div class="paint__canvas-wrapper">
+              <canvas
+                id="paintCanvas"
+                class="paint__canvas"
+                width="900"
+                height="600"
+              ></canvas>
+            </div>
+          </section>
+        </main>
       </div>
-    </main>
-    <script src="app.js"></script>
+    </div>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
